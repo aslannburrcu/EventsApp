@@ -1,0 +1,21 @@
+﻿
+@using BurcuAslan_Events.Models;
+@{
+    ViewBag.Title = "Login";
+}
+
+
+@using (Html.BeginForm("login", "Home"))
+{
+    <div class="input-container">
+        <i class="fa fa-envelope icon"></i>
+        @*<input type="email" placeholder="Email" name="email" class="input-field" required>*@
+        @Html.TextBox("Email", "", new { @class = "form-control", placeholder = "Kullanıcı Adı", required = true })
+    </div>
+    <div class="input-container">
+        <i class="fa fa-key icon"></i>
+        @*<input type="password" placeholder="Password" name="password" class="input-field" required>*@
+        @Html.Password("Password", "", new { @class = "form-control", placeholder = "Şifreniz", required = true })<i class="fa fa-eye icon" onclick="togglePassword()"></i>
+    </div>
+    <div><input type="submit" class="bttn" value="Giriş"></div>
+}

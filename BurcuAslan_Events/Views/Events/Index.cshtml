@@ -1,0 +1,132 @@
+﻿@model BurcuAslan_Events.Models.ViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Etkinlikler</h2>
+
+
+
+<div class="form-horizontal">
+
+    <p>
+        @Html.ActionLink("Etkinlik Oluştur", "Create")
+    </p>
+    <p>
+        @Html.ActionLink("Düzenlediğim Etkinlikler", "MyEvents")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Profilim
+            </th>
+            <th>
+                @Html.DisplayName("Etkinlik adı")
+            </th>
+            <th>
+                @Html.DisplayName("Etkinlik Tarihi")
+            </th>
+            <th>
+                @Html.DisplayName("Açıklama")
+            </th>
+            <th>
+                @Html.DisplayName("Etkinlik Adresi")
+            </th>
+            <th>
+                @Html.DisplayName("Kapasite")
+            </th>
+             <th>
+                    @Html.DisplayName("Etkinlik Durumu")
+                </th>
+            <th>
+                @Html.DisplayName("Şehir")
+            </th>
+            <th>
+                @Html.DisplayName("Kategori Adı")
+            </th>
+            <th>
+                @Html.DisplayName("Kullanıcı Adı")
+            </th>
+            <th>
+                Bilet Al
+            </th>
+            <th>
+                Katılım Durumu
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.events)
+        {
+    <tr>
+        <td>
+            @Html.ActionLink("Profilime Git", "ProfilView", new { id = item.User_no })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event_desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event_Adress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Capacity)
+        </td>
+        <td>
+            @if (item.Event_statu == false)
+            {
+                <p>Onaylandı</p>
+            }
+            else if (item.Event_statu == true)
+            {
+                <p>Reddedildi</p>}
+
+            else
+            { <p>Bekletiliyor</p>}
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cities.City_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event_categories.Event_cate_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Users.User_name)
+        </td>
+        <td>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <a href="@Url.Action("Create", "Tickets", new { id = item.Event_id })">
+                        <input type="submit" value="bilet al" class="btn btn-default" />
+                    </a>
+                </div>
+            </div>
+        </td>
+        <td>
+            @{
+                var message = Session["message"] as string;
+            }
+
+            @if (!string.IsNullOrEmpty(message))
+            {
+                <div class="alert alert-success">@message</div>
+            }
+
+        </td>
+   
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Event_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Event_id }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Event_id })
+            </td>
+        </tr>
+        }
+
+
+    </table>
+</div>

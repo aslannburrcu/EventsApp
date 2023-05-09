@@ -1,0 +1,62 @@
+﻿@model BurcuAslan_Events.Models.ViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Etkinlik Kategorileri Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni kategori Oluştur", "Create","Event_categories")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Etkinlik Adı:
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.event_categories)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event_cate_name)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Event_cate_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Event_cate_id }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Event_cate_id })
+            </td>
+        </tr>
+    }
+
+</table>
+<h2>Şehirler Listesi</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create","Cities")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Şehir Adı:
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.cities)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.City_name)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.City_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.City_id }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.City_id })
+            </td>
+        </tr>
+    }
+
+</table>
+

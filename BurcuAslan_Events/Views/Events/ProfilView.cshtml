@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BurcuAslan_Events.Models.Users>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Kullanıcı Adı:
+        </th>
+        <th>
+            Kullanıcı Soyadı:
+        </th>
+        <th>
+            Email:
+        </th>
+        <th>
+            Password:
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User_lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "PasswordEditing", new { id = item.User_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.User_id }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.User_id })
+            </td>
+        </tr>
+    }
+
+</table>

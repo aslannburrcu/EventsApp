@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BurcuAslan_Events.Models.Tickets>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Styles.Render("~/Content/css")
+<h2>Biletiniz</h2>
+
+<p>
+    @Html.ActionLink("Yeni bilet oluştur", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Bilet kod")
+        </th>
+        <th>
+            @Html.DisplayName("Etkinlik adı")
+        </th>
+        <th>
+            @Html.DisplayName("Kullanıcı adı")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ticket_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Events.Event_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Users.User_name)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Ticket_code }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Ticket_code }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Ticket_code })
+            </td>
+        </tr>
+    }
+    <div>
+        @Html.ActionLink("Etkinlikler Listesine Dön", "Index","Events")
+    </div>
+
+</table>

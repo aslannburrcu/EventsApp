@@ -1,0 +1,96 @@
+﻿@model BurcuAslan_Events.Models.ViewModel
+@{
+    ViewBag.Title = "MyEvents";
+}
+
+<h2>Etkinliklerim</h2>
+
+
+
+<div class="form-horizontal">
+
+    <p>
+        @Html.ActionLink("Etkinlik Oluştur", "Create")
+    </p>
+    <p>
+        @Html.ActionLink("Düzenlediğim Etkinlikler", "MyEvents", "Events")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Profilim
+            </th>
+            <th>
+                @Html.DisplayName("Etkinlik adı")
+            </th>
+            <th>
+                @Html.DisplayName("Etkinlik Tarihi")
+            </th>
+            <th>
+                @Html.DisplayName("Açıklama")
+            </th>
+            <th>
+                @Html.DisplayName("Etkinlik Adresi")
+            </th>
+            <th>
+                @Html.DisplayName("Kapasite")
+            </th>
+            @* <th>
+                    @Html.DisplayName("Etkinlik Durumu")
+                </th>*@
+            <th>
+                @Html.DisplayName("Şehir")
+            </th>
+            <th>
+                @Html.DisplayName("Kategori Adı")
+            </th>
+            <th>
+                @Html.DisplayName("Kullanıcı Adı")
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.events)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_desc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_Adress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                @*  <td>
+                        @Html.DisplayFor(modelItem => item.Event_status)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cities.City_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_categories.Event_cate_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Users.User_name)
+                </td>
+                <td>
+                    @Html.ActionLink("Düzenle", "Edit", new { id = item.Event_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Event_id }) |
+                    @Html.ActionLink("Sil", "Delete", new { id = item.Event_id })
+                </td>
+            </tr>
+        }
+
+
+    </table>
+</div>
+

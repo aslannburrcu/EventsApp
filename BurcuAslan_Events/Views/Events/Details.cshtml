@@ -1,0 +1,90 @@
+﻿@model BurcuAslan_Events.Models.Events
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Events</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Event_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Event_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Event_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Event_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Event_desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Event_desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Event_Adress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Event_Adress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Event_statu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Event_statu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cities.City_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cities.City_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Event_categories.Event_cate_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Event_categories.Event_cate_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Users.User_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Users.User_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Event_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
